@@ -1,30 +1,27 @@
 //
-//  MainController.swift
+//  FlatmateLoginController.swift
 //  splitwise
 //
-//  Created by Gokul Jayavel on 12/1/23.
+//  Created by Gokul Jayavel on 12/4/23.
 //
+
 
 import UIKit
 
-class SignupViewController: UIViewController {
+class FlateMateSignupViewController: UIViewController {
     // Outlets
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
 
     // Signup Action
     @IBAction func signupButtonTapped(_ sender: UIButton) {
-        //let username = usernameTextField.text!
-       // let email = emailTextField.text!
-       // let password = passwordTextField.text!
-      //  let confirmPassword = confirmPasswordTextField.text!
 
         // Add your validation here
         
-        guard let username = usernameTextField.text, !username.isEmpty else{
-            showErrorAlert(message: "Flatname should not be empty!")
+        guard let username = firstnameTextField.text, !username.isEmpty else{
+            showErrorAlert(message: "First name should not be empty!")
             return
         }
         
@@ -38,20 +35,18 @@ class SignupViewController: UIViewController {
             return
         }
         
-        guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else{
-            showErrorAlert(message: "confirmPassword should not be empty!")
+        guard let lastName = lastNameTextField.text, !lastName.isEmpty else{
+            showErrorAlert(message: "Last name should not be empty!")
             return
         }
         
         
         
-        if(password != confirmPassword){
-            self.showErrorAlert(message:"Confirm Password doesn't match with Password")
-            return
-        }
+   
 
         let signupData = [
-            "flatName": username,
+            "firstName": username,
+            "lastName": lastName,
             "email": email,
             "password": password
         ]
@@ -60,7 +55,17 @@ class SignupViewController: UIViewController {
     }
 
     func signupUser(signupData: [String: String]) {
-        guard let url = URL(string: "http://localhost:5001/flat") else { return }
+        
+        var urls: String?
+        
+        if let flatid = retrieveData(forKey: "_id") as? String {
+            // Update the label text
+            urls = "http://localhost:5001/user/\(flatid)"
+            
+        }
+        
+        
+        guard let url = URL(string: urls ?? "") else { return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -88,21 +93,21 @@ class SignupViewController: UIViewController {
                     return
             }
 
-            // Handle success
+
+           
             
             self.showSuccessAlert()
-            self.usernameTextField.text = ""
-            self.emailTextField.text = ""
-            self.passwordTextField.text = ""
-            self.confirmPasswordTextField.text = ""
             DispatchQueue.main.async {
-               
+                self.firstnameTextField.text = ""
+                self.lastNameTextField.text = ""
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
             }
         }.resume()
     }
     
     func showSuccessAlert() {
-        let alert = UIAlertController(title: "Success", message: "Signup successful!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Success", message: "Account Created successful!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         DispatchQueue.main.async {
             self.present(alert, animated: true)
@@ -117,7 +122,10 @@ class SignupViewController: UIViewController {
         }
     }
 
-    
+    func retrieveData(forKey key: String) -> Any? {
+        let defaults = UserDefaults.standard
+        return defaults.object(forKey: key)
+    }
 }
 
 

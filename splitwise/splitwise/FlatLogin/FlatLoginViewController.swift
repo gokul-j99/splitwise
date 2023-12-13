@@ -58,38 +58,42 @@ class LoginViewController: UIViewController {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 // Handle network error
-                DispatchQueue.main.async {
-                    self.showErrorAlert(message: "An error occurred: \(error.localizedDescription)")
-                }
+                self.showErrorAlert(message: "An error occurred: \(error.localizedDescription)")
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode),
-                  let data = data else {
-                // Handle server error
-                DispatchQueue.main.async {
-                    self.showErrorAlert(message: "Login failed with response: \(String(describing: response))")
-                }
-                return
+                (200...299).contains(httpResponse.statusCode) else {
+                    print("Error with the response, unexpected status code: \(String(describing: response))")
+                    
+                    if let data = data,
+                       let errorResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
+                       let errorMessage = errorResponse["message"] {
+                        self.showErrorAlert(message: errorMessage)
+                    } else {
+                        self.showErrorAlert(message: "An unexpected error occurred")
+                    }
+                    
+                    return
             }
 
             do {
                 // Assuming the response is JSON and contains data you want to save
-                if let jsonResponse = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: data!) as? [String: Any] {
                     // Save the response data
+                    print(jsonResponse)
                     self.saveData(jsonResponse)
                     
                     // Perform segue to the next screen
                     DispatchQueue.main.async {
+                        self.emailTextField.text = ""
+                        self.passwordTextField.text = ""
                         self.performSegue(withIdentifier: "LoginToNextScreenSegue", sender: self)
                     }
                 }
             } catch {
                 // Handle JSON parsing error
-                DispatchQueue.main.async {
-                    self.showErrorAlert(message: "Failed to parse response.")
-                }
+                self.showErrorAlert(message: "Failed to parse response.")
             }
         }.resume()
     }
