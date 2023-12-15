@@ -348,37 +348,57 @@ else{
         let expenses = await group_expense.find( {flat_id: req.params.id });
         for (var i=0;i<expenses.length;i++){
             
-            let user =  JSON.parse(JSON.stringify(expenses[i]));
-            let date = moment(user.date).utc().format('YYYY-MM-DD')
-            user.type = user.category
-           // user.category = await user.sub_category;
-            user.date = date;
+            console.log("Inside loop")
+        let usersn =[];
+        let user =  JSON.parse(JSON.stringify(expenses[i]));
+        let ind_exp = expenses[i].user_id;
+        for (var j=0;j<ind_exp.length;j++){
+            usersn.push(await map_name_with_id(ind_exp[j]));
+        }
+        user.mates = usersn
+        let date = moment(user.date).utc().format('YYYY-MM-DD')
+        user.paidby = await map_name_with_id(user.paidby);
+        console.log( typeof user.paidby )
+        user.type = 'expence'
+        user.date = date;
+        user.category = user.sub_category;
+        let sh = ((user.amount)/ user.mates.length).toFixed(2);
+        user.share = sh;
             //console.log(user.category)
-            ans.push(user);
+        ans.push(user);
 
-            name =  await map_name_with_id_param(user.paidby);
-            let cs = ans.filter(an => an.paidby === name);
-             console.log("191",cs);
+            // name =  await map_name_with_id_param(user.paidby);
+            // let cs = ans.filter(an => an.paidby === name);
+            //  console.log("191",cs);
          
              //return cs;
-            return ans
         }
 
-  
+        return ans
 }
 
 }
 //update group expense
 export const group_expense_update = async (req,res) =>{
     const filter = {_id: req.params.id}
-    console.log(req.body);
+    //console.log(req.body);
     let group = await group_expense.findOne(filter);
     let exist_user = group.user_id;
 
     for(var i= 0;i<exist_user.length;i++) {
         var tra = await tracking.findOne({user_id: exist_user[i]});
+        if(tra == null){
+            const new_track = {
+                user_id: exist_user[i],
+                total_group_expense:req.body.amount/user_id.length
+            }
+           let  newtrac = new tracking(new_track);
+            await newtrac.save()
+        }
+        else{
         tra.total_group_expense -= (group.amount)/(group.user_id.length);
         await tracking.findOneAndUpdate({user_id: exist_user[i]},{total_group_expense:tra.total_group_expense});
+        }
     }
     let users = req.body.users;
         let user_id = []
@@ -403,8 +423,18 @@ export const group_expense_update = async (req,res) =>{
 
         for(var i= 0;i<user_id.length;i++) {
             var tra = await tracking.findOne({user_id: user_id[i]});
+            if(tra == null){
+            const new_track = {
+                user_id: user_id[i],
+                total_group_expense:req.body.amount/user_id.length
+            }
+            const track = new tracking(new_track);
+            await track.save()
+        }
+        else{
             tra.total_group_expense += req.body.amount/(user_id.length);
             await tracking.findOneAndUpdate({user_id: user_id[i]},{total_group_expense:tra.total_group_expense})
+        }
             }
         
            

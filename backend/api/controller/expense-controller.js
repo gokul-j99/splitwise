@@ -58,6 +58,7 @@ export const group_expense_put= async (req,res) => {
         const expense = await expenseService.group_expense_update(req,res);
         setResponse(expense,res);
     } catch (error) {
+        console.log(error)
         setError(error,res)
     }
 }

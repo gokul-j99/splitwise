@@ -23,6 +23,11 @@
 		B0A503282B1AB2EE006B41EF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503272B1AB2EE006B41EF /* MainController.swift */; };
 		B0A5032A2B1ACD14006B41EF /* FlatLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */; };
 		B0A5032D2B1BA8AD006B41EF /* FlatLandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */; };
+		B0C4ADD12B2C2CB0006032F2 /* GroupExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4ADD02B2C2CAF006032F2 /* GroupExpenseModel.swift */; };
+		B0C4ADD32B2C2D00006032F2 /* ListUserTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4ADD22B2C2D00006032F2 /* ListUserTable.swift */; };
+		B0C4ADD52B2C2D24006032F2 /* GroupExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4ADD42B2C2D24006032F2 /* GroupExpenseViewController.swift */; };
+		B0C4ADD72B2C2D3B006032F2 /* AddGroupExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4ADD62B2C2D3B006032F2 /* AddGroupExpense.swift */; };
+		B0C4ADD92B2CFE80006032F2 /* UserLanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4ADD82B2CFE80006032F2 /* UserLanding.swift */; };
 		B0DED4742B28E72300F6F34B /* AddExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DED4732B28E72300F6F34B /* AddExpense.swift */; };
 		B0DED4762B28F96800F6F34B /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DED4752B28F96800F6F34B /* Expense.swift */; };
 		B0DED4782B28FDEB00F6F34B /* ExpensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DED4772B28FDEB00F6F34B /* ExpensesTableViewController.swift */; };
@@ -49,6 +54,11 @@
 		B0A503272B1AB2EE006B41EF /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLoginViewController.swift; sourceTree = "<group>"; };
 		B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLandingController.swift; sourceTree = "<group>"; };
+		B0C4ADD02B2C2CAF006032F2 /* GroupExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupExpenseModel.swift; sourceTree = "<group>"; };
+		B0C4ADD22B2C2D00006032F2 /* ListUserTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListUserTable.swift; path = ../../../../../Downloads/ListUserTable.swift; sourceTree = "<group>"; };
+		B0C4ADD42B2C2D24006032F2 /* GroupExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupExpenseViewController.swift; path = ../../../../../Downloads/GroupExpenseViewController.swift; sourceTree = "<group>"; };
+		B0C4ADD62B2C2D3B006032F2 /* AddGroupExpense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddGroupExpense.swift; path = ../../../../../Downloads/AddGroupExpense.swift; sourceTree = "<group>"; };
+		B0C4ADD82B2CFE80006032F2 /* UserLanding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLanding.swift; sourceTree = "<group>"; };
 		B0DED4732B28E72300F6F34B /* AddExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense.swift; sourceTree = "<group>"; };
 		B0DED4752B28F96800F6F34B /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		B0DED4772B28FDEB00F6F34B /* ExpensesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTableViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +82,7 @@
 			children = (
 				B01BE2732B1FDA84009C8981 /* User.swift */,
 				B0DED4752B28F96800F6F34B /* Expense.swift */,
+				B0C4ADD02B2C2CAF006032F2 /* GroupExpenseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B0A503272B1AB2EE006B41EF /* MainController.swift */,
+				B0C4ADD82B2CFE80006032F2 /* UserLanding.swift */,
 				B03668D32B26C31800D0FA06 /* ProfileUpdateViewController.swift */,
 				B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */,
 				B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */,
@@ -132,6 +144,9 @@
 				B0DED4772B28FDEB00F6F34B /* ExpensesTableViewController.swift */,
 				B0DED4792B28FE4200F6F34B /* PersonalExpenseUpdateViewController.swift */,
 				B06E4E1B2B2BE3900083760E /* GroupExpense.swift */,
+				B0C4ADD22B2C2D00006032F2 /* ListUserTable.swift */,
+				B0C4ADD62B2C2D3B006032F2 /* AddGroupExpense.swift */,
+				B0C4ADD42B2C2D24006032F2 /* GroupExpenseViewController.swift */,
 			);
 			path = Personalexpense;
 			sourceTree = "<group>";
@@ -211,10 +226,15 @@
 				B0A5032D2B1BA8AD006B41EF /* FlatLandingController.swift in Sources */,
 				B0DED47A2B28FE4200F6F34B /* PersonalExpenseUpdateViewController.swift in Sources */,
 				B01EAB042B182B6900A12BA6 /* ViewController.swift in Sources */,
+				B0C4ADD52B2C2D24006032F2 /* GroupExpenseViewController.swift in Sources */,
 				B01EAB002B182B6900A12BA6 /* AppDelegate.swift in Sources */,
 				B01BE2702B1EC035009C8981 /* FlatmatecreateController.swift in Sources */,
 				B06E4E1C2B2BE3900083760E /* GroupExpense.swift in Sources */,
+				B0C4ADD92B2CFE80006032F2 /* UserLanding.swift in Sources */,
 				B0DED47D2B29310F00F6F34B /* refrence.swift in Sources */,
+				B0C4ADD12B2C2CB0006032F2 /* GroupExpenseModel.swift in Sources */,
+				B0C4ADD72B2C2D3B006032F2 /* AddGroupExpense.swift in Sources */,
+				B0C4ADD32B2C2D00006032F2 /* ListUserTable.swift in Sources */,
 				B01EAB0A2B182B6900A12BA6 /* splitwise.xcdatamodeld in Sources */,
 				B01EAB022B182B6900A12BA6 /* SceneDelegate.swift in Sources */,
 				B01BE2772B1FEEDB009C8981 /* PasswordEntryViewController.swift in Sources */,

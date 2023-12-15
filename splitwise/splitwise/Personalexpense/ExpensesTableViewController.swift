@@ -60,11 +60,12 @@ class ExpensesTableViewController: UITableViewController {
 
                     do {
                         if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                            self?.expenses = json.compactMap(Expense.init)
+                         let fetchedExpenses = json.compactMap(Expense.init)
                             
-                            
-                            print(self?.expenses)
+                         
+                            print(fetchedExpenses)
                             DispatchQueue.main.async {
+                                self?.expenses = fetchedExpenses
                                 self?.tableView.reloadData()
                             }
                         }

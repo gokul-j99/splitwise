@@ -40,7 +40,8 @@ class UsersTableViewController: UITableViewController {
                     if let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
                         // Map the JSON array to an array of User objects
                         self.users = jsonArray.compactMap { User(json: $0) }
-                        self.saveData(self.users)
+                       // self.saveData(self.users)
+                        self.saveUsers(self.users, forKey: "allusers")
                         // Update the table view on the main thread
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -89,9 +90,20 @@ class UsersTableViewController: UITableViewController {
         return defaults.object(forKey: key)
     }
     
-    func saveData(_ data: [User]) {
-          let defaults = UserDefaults.standard
-        defaults.set(data, forKey: "allusers")
-      }
+    func saveUsers(_ users: [User], forKey key: String) {
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(users)
+            UserDefaults.standard.set(data, forKey: key)
+        } catch {
+            print("Unable to Encode Array of Users (\(error))")
+        }
+    }
+
+//
+//    func saveData(_ data: [User]) {
+//          let defaults = UserDefaults.standard
+//        defaults.set(data, forKey: "allusers")
+//      }
 
 }
