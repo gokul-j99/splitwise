@@ -491,6 +491,37 @@
             </objects>
             <point key="canvasLocation" x="4159.5419847328239" y="569.71830985915494"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="eBJ-I6-Wxn">
+            <objects>
+                <tableViewController id="Qn1-qa-Odu" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qot-ga-QQt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xAJ-f2-g07">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xAJ-f2-g07" id="pRm-6c-uPR">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qn1-qa-Odu" id="x2q-pB-dhr"/>
+                            <outlet property="delegate" destination="Qn1-qa-Odu" id="sgq-sF-sYp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="OoX-fu-2j4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GGJ-0J-wbU"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6fm-th-g1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4199" y="1296"/>
+        </scene>
         <!--Expenses Table View Controller-->
         <scene sceneID="Z0o-xd-VF6">
             <objects>

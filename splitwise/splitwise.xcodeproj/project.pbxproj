@@ -19,6 +19,7 @@
 		B01EAB0C2B182B6A00A12BA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B01EAB0B2B182B6A00A12BA6 /* Assets.xcassets */; };
 		B01EAB0F2B182B6A00A12BA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B01EAB0D2B182B6A00A12BA6 /* LaunchScreen.storyboard */; };
 		B03668D42B26C31800D0FA06 /* ProfileUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03668D32B26C31800D0FA06 /* ProfileUpdateViewController.swift */; };
+		B06E4E1C2B2BE3900083760E /* GroupExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06E4E1B2B2BE3900083760E /* GroupExpense.swift */; };
 		B0A503282B1AB2EE006B41EF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503272B1AB2EE006B41EF /* MainController.swift */; };
 		B0A5032A2B1ACD14006B41EF /* FlatLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */; };
 		B0A5032D2B1BA8AD006B41EF /* FlatLandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */; };
@@ -44,6 +45,7 @@
 		B01EAB0E2B182B6A00A12BA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B01EAB102B182B6A00A12BA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03668D32B26C31800D0FA06 /* ProfileUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateViewController.swift; sourceTree = "<group>"; };
+		B06E4E1B2B2BE3900083760E /* GroupExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupExpense.swift; sourceTree = "<group>"; };
 		B0A503272B1AB2EE006B41EF /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLoginViewController.swift; sourceTree = "<group>"; };
 		B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLandingController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				B0DED47C2B29310F00F6F34B /* refrence.swift */,
 				B0DED4772B28FDEB00F6F34B /* ExpensesTableViewController.swift */,
 				B0DED4792B28FE4200F6F34B /* PersonalExpenseUpdateViewController.swift */,
+				B06E4E1B2B2BE3900083760E /* GroupExpense.swift */,
 			);
 			path = Personalexpense;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				B01EAB042B182B6900A12BA6 /* ViewController.swift in Sources */,
 				B01EAB002B182B6900A12BA6 /* AppDelegate.swift in Sources */,
 				B01BE2702B1EC035009C8981 /* FlatmatecreateController.swift in Sources */,
+				B06E4E1C2B2BE3900083760E /* GroupExpense.swift in Sources */,
 				B0DED47D2B29310F00F6F34B /* refrence.swift in Sources */,
 				B01EAB0A2B182B6900A12BA6 /* splitwise.xcdatamodeld in Sources */,
 				B01EAB022B182B6900A12BA6 /* SceneDelegate.swift in Sources */,

@@ -64,7 +64,7 @@ else{
             else{
                 const new_track = {
                     user_id: user_id[i],
-                    total_group_expense:req.body.amount
+                    total_group_expense:req.body.amount/user_id.length
                 }
                 const track = new tracking(new_track);
                 await track.save()
@@ -257,6 +257,9 @@ export const group_expense_search = async (req,res) =>{
     console.log("in group",filter);
 
     let ans =[]
+    let name;
+
+    if (Object.keys(req.query).length > 0) {
     console.log(req.query);
 
     const {frequency} = req.query.frequency;
@@ -301,20 +304,11 @@ export const group_expense_search = async (req,res) =>{
     });
     console.log("111");
     console.log(req.query.paidby);
-    let name;
+   
 
     if(req.query.paidby!== 'all'){
 
-    
     }
-
-
-
-
-
-
-
-
     for (var i=0;i<expenses.length;i++){
         console.log("Inside loop")
         let usersn =[];
@@ -335,16 +329,44 @@ export const group_expense_search = async (req,res) =>{
     
         ans.push(user)
     }
-if(req.query.paidby !=='all'){
-    name =  await map_name_with_id_param(req.query.paidby);
-   let cs = ans.filter(an => an.paidby === name);
-    console.log("191",cs);
+    if(req.query.paidby !=='all'){
+        name =  await map_name_with_id_param(req.query.paidby);
+       let cs = ans.filter(an => an.paidby === name);
+        console.log("191",cs);
+    
+        return cs;
+    }
+    else{
+        return ans;
+    }
 
-    return cs;
 }
+
 else{
-    return ans;
+
+        console.log("in else")
+        let expenses = await group_expense.find( {flat_id: req.params.id });
+        for (var i=0;i<expenses.length;i++){
+            
+            let user =  JSON.parse(JSON.stringify(expenses[i]));
+            let date = moment(user.date).utc().format('YYYY-MM-DD')
+            user.type = user.category
+           // user.category = await user.sub_category;
+            user.date = date;
+            //console.log(user.category)
+            ans.push(user);
+
+            name =  await map_name_with_id_param(user.paidby);
+            let cs = ans.filter(an => an.paidby === name);
+             console.log("191",cs);
+         
+             //return cs;
+            return ans
+        }
+
+  
 }
+
 }
 //update group expense
 export const group_expense_update = async (req,res) =>{
@@ -499,10 +521,12 @@ const  check_budget = async (user_id,track) => {
     console.log(user);
     console.log(user.monthly_budget);
     console.log(track.total_expense_Indvidual+ track.total_group_expense)
+    if(user.monthly_budget != 0){
     if ((track.total_expense_Indvidual+ track.total_group_expense) > (0.8 * user.monthly_budget)){
        
         await sendEmail(user.email, "Budget Alert", "You have crossed your 80% of the budget. Spend wsiely");
     }
+}
 
 }
 

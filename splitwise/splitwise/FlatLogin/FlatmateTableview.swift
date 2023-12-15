@@ -40,7 +40,7 @@ class UsersTableViewController: UITableViewController {
                     if let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
                         // Map the JSON array to an array of User objects
                         self.users = jsonArray.compactMap { User(json: $0) }
-                        
+                        self.saveData(self.users)
                         // Update the table view on the main thread
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -88,4 +88,10 @@ class UsersTableViewController: UITableViewController {
         let defaults = UserDefaults.standard
         return defaults.object(forKey: key)
     }
+    
+    func saveData(_ data: [User]) {
+          let defaults = UserDefaults.standard
+        defaults.set(data, forKey: "allusers")
+      }
+
 }
