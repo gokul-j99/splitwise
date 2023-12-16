@@ -23,6 +23,10 @@ const notification = () => {
     noti();
   });
 
+//   cron.schedule('0 */1 * * * *', () => {
+//     console.log('running a task every 5 minutes');
+//     noti();
+// });
 
   // job runs on every 1st day of month to send monthly expense
   cron.schedule('0 0 1 * *', () => {
@@ -40,7 +44,7 @@ const noti = async () => {
   let datearr = JSON.stringify(date).split('-');
 
   const exp = await Notification.find();
-
+console.log(exp)
   for (var i = 0; i < exp.length; i++) {
     let id = exp[i].expenseId;
     let d = moment(exp[i].date).utc().format('YYYY-MM-DD')
@@ -50,9 +54,11 @@ const noti = async () => {
       let expe = await expense.find({
         _id: id
       });
+      if(expe !== null){
 
+      console.log(expe)
       let ex = expe[0];
-
+      console.log(ex)
       let use = await User.find({
         _id: ex.user_id
       });
@@ -61,7 +67,7 @@ const noti = async () => {
       let message = `You have a regular payment of ${ex.amount} for ${ex.description} on ${date}. Pay it on time.`
       await sendEmail(email, "Payment Notification", message);
     }
-
+  }
   }
 }
 

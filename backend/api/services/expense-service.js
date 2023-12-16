@@ -35,6 +35,9 @@ else{
         console.log("in group");
         let user_id = req.body.users;
         console.log(user_id);
+
+
+
         const shared = (req.body.amount)/user_id.length;
         let exps = {
             sub_category: req.body.sub_category,
@@ -45,7 +48,8 @@ else{
             flat_id: req.params.id,
             reference: req.body.reference,
             category:req.body.category,
-            paidby:req.body.paidby
+            paidby:req.body.paidby,
+            date: new Date(req.body.date)
         }
         for(var i= 0;i<user_id.length;i++) {
             const result = await tracking.exists({ user_id: user_id[i]});
@@ -87,7 +91,8 @@ else{
             user_id: req.params.id,
             category: req.body.category,
             reference: req.body.reference,
-            recurring_expense:req.body.recurring_expense
+            recurring_expense:req.body.recurring_expense,
+            date:  new Date(req.body.date)
         }
         console.log(exps);
         const exp = new expense(exps);
@@ -96,7 +101,7 @@ else{
 
         if(req.body.recurring_expense){
             const notification = {
-                date : req.body.date,
+                date :  new Date(req.body.date),
                 expenseId: espense._id
             }
             const noti = new Notification(notification);
@@ -165,58 +170,55 @@ export const personal_expence_search = async (req,res) =>{
     //console.log(req.query);
 
     if (Object.keys(req.query).length > 0) {
-        const {frequency} = req.query.frequency;
-        const {selectedRange} = req.query.selectedRange;
-        const   category  = req.query.type;
-        const   sub_category  = req.query.category;
-        let ct = req.query.selectedRange.split(',')
+        const {
+            frequency = "365",
+            selectedRange = "",
+            type = "all",
+            category = "all"
+        } = req.query;
         let date1;
         let date2;
-        console.log(ct);
-        if(ct.length > 1){
-            date1 =  ct[0].split('T');
-            date2= ct[1].split('T');
-        date1 = new Date(date1[0]);
-        date2 = new Date(date2[0])
-        console.log(new Date(date2[0]));
+    console.log(category)
+    console.log(type)
+        if (selectedRange && selectedRange.includes(',')) {
+            console.log("inside range")
+            const ct = selectedRange.split(',');
+            date1 = new Date(ct[0]);
+            date2 = new Date(ct[1]);
         }
-        let expenses = await expense.find(    {
-            //   conditional property to check if the frequency is equal to custom
-          ...(req.query.frequency !== "custom"
-            ? {
-                date: {
-                  $gt: moment().subtract(Number(req.query.frequency), "d").toDate(),
-                },
-              }
-            : {
-                date: {
-                  $gte: date1,
-                  $lte: date2,
-                },
-              }),
-          user_id: req.params.id,
-        //   conditional property
-          ...(req.query.type!=='all' && {category}),
-          ...(req.query.category!=='all' && {sub_category})
+    
+        let expenses = await expense.find({
+            ...(frequency !== "custom"
+                ? {
+                    date: {
+                        $gt: moment().subtract(Number(frequency), "d").toDate(),
+                    },
+                  }
+                : {
+                    date: {
+                        $gte: date1,
+                        $lte: date2,
+                    },
+                  }),
+            user_id: req.params.id,
+            ...(type !== 'all' && { category: type }),
+            ...(category !== 'all' && { sub_category: category })
         });
-    console.log(expenses);
     
+       
     
-    
-        for (var i=0;i<expenses.length;i++){
-            
-            let user =  JSON.parse(JSON.stringify(expenses[i]));
-            let date = moment(user.date).utc().format('YYYY-MM-DD')
-            user.type = user.category
-           // user.category = await user.sub_category;
+        for (let i = 0; i < expenses.length; i++) {
+            let user = JSON.parse(JSON.stringify(expenses[i]));
+            let date = moment(user.date).utc().format('YYYY-MM-DD');
+            user.type = user.category;
             user.date = date;
-            //console.log(user.category)
             ans.push(user);
         }
     
         console.log(ans);
-       
-      }
+        
+    }
+    
 
       else{
         console.log("in else")
@@ -260,87 +262,98 @@ export const group_expense_search = async (req,res) =>{
     let name;
 
     if (Object.keys(req.query).length > 0) {
-    console.log(req.query);
+       // console.log(req.query);
+    
+        // const {
+        //     frequency = "365",
+        //     selectedRange = "",
+        //     paidby = "all",
+        //     category = "all"
+        // } = req.query;
+        const {
+            frequency = "365",
+            selectedRange = "",
+            paidby = "all",
+            category = "all"
+        } = req.query;
+        console.log(frequency);
+        //console.log(selectedRange);
+        console.log(paidby);
+        console.log(category);
 
-    const {frequency} = req.query.frequency;
-    const {selectedRange} = req.query.selectedRange;
-    const   paidby  = req.query.paidby;
-    const   sub_category  = req.query.category;
-
-    console.log(req.query.frequency)
-    console.log(req.query.selectedRange)
-    console.log(req.query.paidby)
-    console.log(req.query.category)
-    let ct = req.query.selectedRange.split(',')
-    let date1;
-    let date2;
-
-    if(ct.length > 1){
-        date1 =  ct[0].split('T');
-        date2= ct[1].split('T');
-    date1 = new Date(date1[0]);
-    date2 = new Date(date2[0]);
-    console.log(new Date(date2[0]));
-    }
-
-
-    let expenses = await group_expense.find(    {
-        //   conditional property to check if the frequency is equal to custom
-      ...(req.query.frequency !== "custom"
-        ? {
-            date: {
-              $gt: moment().subtract(Number(req.query.frequency), "d").toDate(),
-            },
-          }
-        : {
-            date: {
-              $gte: date1,
-              $lte: date2,
-            },
-          }),
-      user_id: req.params.id,
-    //   conditional property
-      ...(req.query.category!=='all' && {sub_category})
-    });
-    console.log("111");
-    console.log(req.query.paidby);
-   
-
-    if(req.query.paidby!== 'all'){
-
-    }
-    for (var i=0;i<expenses.length;i++){
-        console.log("Inside loop")
-        let usersn =[];
-        let user =  JSON.parse(JSON.stringify(expenses[i]));
-        let ind_exp = expenses[i].user_id;
-        for (var j=0;j<ind_exp.length;j++){
-            usersn.push(await map_name_with_id(ind_exp[j]));
+        let id = ""
+        if(paidby !== "all"){
+             id = new mongoose.Types.ObjectId(paidby)
         }
-        user.mates = usersn
-        let date = moment(user.date).utc().format('YYYY-MM-DD')
-        user.paidby = await map_name_with_id(user.paidby);
-        console.log( typeof user.paidby )
-        user.type = 'expence'
-        user.date = date;
-        user.category = user.sub_category;
-        let sh = ((user.amount)/ user.mates.length).toFixed(2);
-        user.share = sh;
     
-        ans.push(user)
-    }
-    if(req.query.paidby !=='all'){
-        name =  await map_name_with_id_param(req.query.paidby);
-       let cs = ans.filter(an => an.paidby === name);
-        console.log("191",cs);
+        let ct = selectedRange.split(',');
+        let date1;
+        let date2;
     
-        return cs;
+        if (ct.length > 1) {
+            const ct = selectedRange.split(',');
+            date1 = new Date(ct[0]);
+            date2 = new Date(ct[1]);
+        }
+    
+        let expenses = await group_expense.find({
+            ...(frequency !== "custom"
+                ? {
+                    date: {
+                        $gt: moment().subtract(Number(frequency), "d").toDate(),
+                    },
+                  }
+                : {
+                    date: {
+                        $gte: date1,
+                        $lte: date2,
+                    },
+                  }),
+            flat_id: req.params.id,
+            ...(paidby !== 'all' && { paidby: id }),
+            ...(category !== 'all' && { sub_category: category })
+        });
+    
+        console.log("111");
+        console.log(req.params.id);
+        
+         let ans = [];
+    
+        for (let i = 0; i < expenses.length; i++) {
+            console.log("Inside loop");
+            let usersn = [];
+            let user = JSON.parse(JSON.stringify(expenses[i]));
+            let ind_exp = expenses[i].user_id;
+    
+            for (let j = 0; j < ind_exp.length; j++) {
+                usersn.push(await map_name_with_id(ind_exp[j]));
+            }
+    
+            user.mates = usersn;
+            let date = moment(user.date).utc().format('YYYY-MM-DD');
+            user.paidby = await map_name_with_id(user.paidby);
+            console.log(typeof user.paidby);
+            user.type = 'expence';
+            user.date = date;
+            user.category = user.sub_category;
+    
+            let sh = (user.amount / user.mates.length).toFixed(2);
+            user.share = sh;
+    
+            ans.push(user);
+        }
+        return ans
+    
+        // if (paidby !== 'all') {
+        //     name = await map_name_with_id_param(paidby);
+        //     let cs = ans.filter((an) => an.paidby === name);
+        //     console.log("191", cs);
+        //     return cs;
+        // } else {
+        //     return ans;
+        // }
     }
-    else{
-        return ans;
-    }
-
-}
+    
 
 else{
 
@@ -418,7 +431,8 @@ export const group_expense_update = async (req,res) =>{
             user_id: user_id,
             flat_id: req.body.flat_id,
             reference: req.body.reference,
-            category:req.body.category
+            category:req.body.category,
+            date:  new Date(req.body.date)
         }
 
         for(var i= 0;i<user_id.length;i++) {
@@ -464,7 +478,8 @@ export const personsl_expense_update = async (req,res) =>{
         description: req.body.description,
         user_id: req.body.user_id,
         reference: req.body.reference,
-        category : req.body.category
+        category : req.body.category,
+        date: new Date(req.body.date)
     }
 
     if (exp.category === 'Income'){
@@ -551,11 +566,10 @@ const  check_budget = async (user_id,track) => {
     console.log(user);
     console.log(user.monthly_budget);
     console.log(track.total_expense_Indvidual+ track.total_group_expense)
-    if(user.monthly_budget != 0){
+    
     if ((track.total_expense_Indvidual+ track.total_group_expense) > (0.8 * user.monthly_budget)){
        
         await sendEmail(user.email, "Budget Alert", "You have crossed your 80% of the budget. Spend wsiely");
-    }
 }
 
 }

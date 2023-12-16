@@ -20,6 +20,8 @@
 		B01EAB0F2B182B6A00A12BA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B01EAB0D2B182B6A00A12BA6 /* LaunchScreen.storyboard */; };
 		B03668D42B26C31800D0FA06 /* ProfileUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03668D32B26C31800D0FA06 /* ProfileUpdateViewController.swift */; };
 		B06E4E1C2B2BE3900083760E /* GroupExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06E4E1B2B2BE3900083760E /* GroupExpense.swift */; };
+		B06F93A72B2D290F00FC4708 /* PrivateAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F93A62B2D290F00FC4708 /* PrivateAnalysis.swift */; };
+		B06F93A92B2D65AA00FC4708 /* Group Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F93A82B2D65AA00FC4708 /* Group Analysis.swift */; };
 		B0A503282B1AB2EE006B41EF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503272B1AB2EE006B41EF /* MainController.swift */; };
 		B0A5032A2B1ACD14006B41EF /* FlatLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */; };
 		B0A5032D2B1BA8AD006B41EF /* FlatLandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */; };
@@ -51,6 +53,8 @@
 		B01EAB102B182B6A00A12BA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03668D32B26C31800D0FA06 /* ProfileUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateViewController.swift; sourceTree = "<group>"; };
 		B06E4E1B2B2BE3900083760E /* GroupExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupExpense.swift; sourceTree = "<group>"; };
+		B06F93A62B2D290F00FC4708 /* PrivateAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAnalysis.swift; sourceTree = "<group>"; };
+		B06F93A82B2D65AA00FC4708 /* Group Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group Analysis.swift"; sourceTree = "<group>"; };
 		B0A503272B1AB2EE006B41EF /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLoginViewController.swift; sourceTree = "<group>"; };
 		B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLandingController.swift; sourceTree = "<group>"; };
@@ -140,12 +144,14 @@
 			isa = PBXGroup;
 			children = (
 				B0DED4732B28E72300F6F34B /* AddExpense.swift */,
+				B06F93A62B2D290F00FC4708 /* PrivateAnalysis.swift */,
 				B0DED47C2B29310F00F6F34B /* refrence.swift */,
 				B0DED4772B28FDEB00F6F34B /* ExpensesTableViewController.swift */,
 				B0DED4792B28FE4200F6F34B /* PersonalExpenseUpdateViewController.swift */,
 				B06E4E1B2B2BE3900083760E /* GroupExpense.swift */,
 				B0C4ADD22B2C2D00006032F2 /* ListUserTable.swift */,
 				B0C4ADD62B2C2D3B006032F2 /* AddGroupExpense.swift */,
+				B06F93A82B2D65AA00FC4708 /* Group Analysis.swift */,
 				B0C4ADD42B2C2D24006032F2 /* GroupExpenseViewController.swift */,
 			);
 			path = Personalexpense;
@@ -233,6 +239,7 @@
 				B0C4ADD92B2CFE80006032F2 /* UserLanding.swift in Sources */,
 				B0DED47D2B29310F00F6F34B /* refrence.swift in Sources */,
 				B0C4ADD12B2C2CB0006032F2 /* GroupExpenseModel.swift in Sources */,
+				B06F93A92B2D65AA00FC4708 /* Group Analysis.swift in Sources */,
 				B0C4ADD72B2C2D3B006032F2 /* AddGroupExpense.swift in Sources */,
 				B0C4ADD32B2C2D00006032F2 /* ListUserTable.swift in Sources */,
 				B01EAB0A2B182B6900A12BA6 /* splitwise.xcdatamodeld in Sources */,
@@ -245,6 +252,7 @@
 				B01BE2742B1FDA84009C8981 /* User.swift in Sources */,
 				B0DED4782B28FDEB00F6F34B /* ExpensesTableViewController.swift in Sources */,
 				B01BE2722B1FD61F009C8981 /* FlatmateTableview.swift in Sources */,
+				B06F93A72B2D290F00FC4708 /* PrivateAnalysis.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

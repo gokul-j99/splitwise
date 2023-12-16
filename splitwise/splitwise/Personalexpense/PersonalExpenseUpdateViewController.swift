@@ -19,7 +19,7 @@ class PersonalExpenseViewController: UIViewController{
     var recexp = false
     var recurringexp = "No"
     var recurringexparr = ["Yes", "No"]
-    var cattypes = ["Food", "Rent", "Mobile", "Grocieries", "Travel"]
+    var cattypes = ["Food", "Rent", "Miscellaneous", "Grocieries", "Travel"]
     var types = ["Income", "Expense"]
     var dateString: String = ""
     

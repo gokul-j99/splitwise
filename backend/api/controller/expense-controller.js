@@ -19,6 +19,7 @@ export const post = async (req, res) => {
         const user = await expenseService.save(req,res);
         //setResponse(user,res)
 	} catch (error) {
+        console.log(error)
 		setError(error,res)
 	}
 }
