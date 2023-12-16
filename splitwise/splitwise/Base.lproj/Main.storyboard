@@ -689,7 +689,7 @@
                                                                     <constraint firstAttribute="height" constant="40" id="VOh-cs-b7c"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="datePickerValueChanged:" destination="vgX-0c-Cug" eventType="touchUpInside" id="j1j-Gx-bmb"/>
+                                                                    <action selector="datePickerValueChanged:" destination="Jz6-8f-mb2" eventType="valueChanged" id="ZFG-hy-34N"/>
                                                                 </connections>
                                                             </datePicker>
                                                         </subviews>
@@ -712,7 +712,7 @@
                                                                     <constraint firstAttribute="height" constant="40" id="V27-ww-S7Q"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="enddatePickerValueChanged:" destination="vgX-0c-Cug" eventType="touchUpInside" id="wZJ-Tb-Tmv"/>
+                                                                    <action selector="enddatePickerValueChanged:" destination="Jz6-8f-mb2" eventType="valueChanged" id="Pgc-Bj-NCu"/>
                                                                 </connections>
                                                             </datePicker>
                                                         </subviews>
@@ -803,6 +803,42 @@
             </objects>
             <point key="canvasLocation" x="2704.5801526717555" y="-606.33802816901414"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="VJ7-Qk-AM3">
+            <objects>
+                <viewController id="TB7-45-4qD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OwY-Fq-1pD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UE6-Al-NBF">
+                                <rect key="frame" x="58" y="331" width="272" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E92-hQ-rFE">
+                                <rect key="frame" x="73" y="432" width="257" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Send Email"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forgot Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpf-G6-HWD">
+                                <rect key="frame" x="73" y="173" width="231" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hss-qH-Y2R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y47-Nc-vOt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2206.8702290076335" y="-36.619718309859159"/>
+        </scene>
         <!--Private Analysis-->
         <scene sceneID="NkZ-Vm-jJU">
             <objects>
@@ -867,7 +903,7 @@
                                                                     <constraint firstAttribute="height" constant="40" id="qaE-1b-kcq"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="datePickerValueChanged:" destination="vgX-0c-Cug" eventType="touchUpInside" id="mpC-hN-ZMP"/>
+                                                                    <action selector="datePickerValueChanged:" destination="vgX-0c-Cug" eventType="valueChanged" id="ZKj-bW-7F3"/>
                                                                 </connections>
                                                             </datePicker>
                                                         </subviews>
@@ -890,7 +926,7 @@
                                                                     <constraint firstAttribute="height" constant="40" id="AUF-I5-1Me"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="enddatePickerValueChanged:" destination="vgX-0c-Cug" eventType="touchUpInside" id="iuc-7e-Otm"/>
+                                                                    <action selector="enddatePickerValueChanged:" destination="vgX-0c-Cug" eventType="valueChanged" id="SKm-r7-eiO"/>
                                                                 </connections>
                                                             </datePicker>
                                                         </subviews>
@@ -1139,7 +1175,7 @@
                                                                     <constraint firstAttribute="height" constant="60" id="CpE-em-iR5"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="datePickerValueChanged:" destination="9zI-Fh-u6e" eventType="touchUpInside" id="99R-lo-VIS"/>
+                                                                    <action selector="datePickerValueChanged:" destination="9zI-Fh-u6e" eventType="valueChanged" id="T9y-GP-vW9"/>
                                                                 </connections>
                                                             </datePicker>
                                                         </subviews>
@@ -1324,6 +1360,9 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="60" id="dmv-lo-Yoq"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="datePickerValueChanged:" destination="ZJA-lf-Xmn" eventType="valueChanged" id="nSC-zJ-RNb"/>
+                                                                </connections>
                                                             </datePicker>
                                                         </subviews>
                                                     </stackView>
@@ -2148,7 +2187,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VkR-cm-Bm3"/>
+        <segue reference="5rC-Ui-znw"/>
         <segue reference="bo0-bK-Qc6"/>
         <segue reference="orO-TH-fxw"/>
     </inferredMetricsTieBreakers>

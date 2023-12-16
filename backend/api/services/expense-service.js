@@ -432,6 +432,7 @@ export const group_expense_update = async (req,res) =>{
             flat_id: req.body.flat_id,
             reference: req.body.reference,
             category:req.body.category,
+            paidby:req.body.paidby,
             date:  new Date(req.body.date)
         }
 

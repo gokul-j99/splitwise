@@ -3,6 +3,7 @@ import bcrypt  from 'bcrypt'
 import { Flat } from '../models/flat.js';
 import {validate,login_validate} from '../models/flat.js'
 import {Token }from "../models/token.js";
+import sendEmail from './../utils/sendEmail.js';
 
 // used to save the parent variables
 export const save = async (req,res) => {
@@ -27,6 +28,7 @@ export const save = async (req,res) => {
         use.password = hashPassword
         const newUser = new Flat(use);
         newUser.save();
+        await sendEmail(req.body.email, "Account Created", "You have Created Account in Flatmate Expense Tracker");
 		return res.status(201).send({ message: "Flat created successfully" });
       //  return res;
 } 

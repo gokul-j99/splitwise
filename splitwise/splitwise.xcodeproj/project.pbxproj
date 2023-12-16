@@ -22,6 +22,7 @@
 		B06E4E1C2B2BE3900083760E /* GroupExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06E4E1B2B2BE3900083760E /* GroupExpense.swift */; };
 		B06F93A72B2D290F00FC4708 /* PrivateAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F93A62B2D290F00FC4708 /* PrivateAnalysis.swift */; };
 		B06F93A92B2D65AA00FC4708 /* Group Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F93A82B2D65AA00FC4708 /* Group Analysis.swift */; };
+		B06F93AB2B2DEB9000FC4708 /* Forgot Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F93AA2B2DEB9000FC4708 /* Forgot Password.swift */; };
 		B0A503282B1AB2EE006B41EF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503272B1AB2EE006B41EF /* MainController.swift */; };
 		B0A5032A2B1ACD14006B41EF /* FlatLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */; };
 		B0A5032D2B1BA8AD006B41EF /* FlatLandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */; };
@@ -55,6 +56,7 @@
 		B06E4E1B2B2BE3900083760E /* GroupExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupExpense.swift; sourceTree = "<group>"; };
 		B06F93A62B2D290F00FC4708 /* PrivateAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAnalysis.swift; sourceTree = "<group>"; };
 		B06F93A82B2D65AA00FC4708 /* Group Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group Analysis.swift"; sourceTree = "<group>"; };
+		B06F93AA2B2DEB9000FC4708 /* Forgot Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Forgot Password.swift"; sourceTree = "<group>"; };
 		B0A503272B1AB2EE006B41EF /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B0A503292B1ACD14006B41EF /* FlatLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLoginViewController.swift; sourceTree = "<group>"; };
 		B0A5032C2B1BA8AD006B41EF /* FlatLandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLandingController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				B01BE26F2B1EC035009C8981 /* FlatmatecreateController.swift */,
 				B01BE2712B1FD61F009C8981 /* FlatmateTableview.swift */,
 				B01BE2762B1FEEDB009C8981 /* PasswordEntryViewController.swift */,
+				B06F93AA2B2DEB9000FC4708 /* Forgot Password.swift */,
 			);
 			path = FlatLogin;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				B0A503282B1AB2EE006B41EF /* MainController.swift in Sources */,
 				B0A5032A2B1ACD14006B41EF /* FlatLoginViewController.swift in Sources */,
 				B03668D42B26C31800D0FA06 /* ProfileUpdateViewController.swift in Sources */,
+				B06F93AB2B2DEB9000FC4708 /* Forgot Password.swift in Sources */,
 				B0DED4742B28E72300F6F34B /* AddExpense.swift in Sources */,
 				B01BE2742B1FDA84009C8981 /* User.swift in Sources */,
 				B0DED4782B28FDEB00F6F34B /* ExpensesTableViewController.swift in Sources */,
