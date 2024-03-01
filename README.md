@@ -1,2 +1,2 @@
 # splitwise
-Creating an Repo for smartphone final
+Creating an Repo for smartphone final Assignment
